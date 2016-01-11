@@ -1,4 +1,4 @@
-" ============================================================================ "
+
 " ===                               PLUGINS                                === "
 " ============================================================================ "
 
@@ -35,6 +35,8 @@ Bundle "vim-scripts/tcomment"
 Bundle "geoffharcourt/vim-matchit"
 Bundle "xenoterracide/html.vim"
 Bundle "Valloric/YouCompleteMe"
+Bundle "Chiel92/vim-autoformat"
+Bundle "Yggdroot/indentLine"
 
 " ============================================================================ "
 " ===                           EDITING OPTIONS                            === "
@@ -44,7 +46,7 @@ Bundle "Valloric/YouCompleteMe"
 filetype indent on
 filetype plugin on              " Enable matching pairs for match-it
 set backspace=indent,eol,start  " Backspace works as it damn well should!
-set clipboard=unnamed           " yank and paste with the system clipboard
+" set clipboard=unnamed           " yank and paste with the system clipboard
 set cursorline
 set expandtab                   " Tabs as 4 spaces
 set foldenable                  " enable folding
@@ -61,14 +63,24 @@ set laststatus=2
 set lazyredraw                  " tells vim to not redraw during times when not needed, like macros. Enables faster macros.
 set nolist
 set nowrap                      " do not wrap long lines by default
+set noswapfile
 set number                      " Line Numbers
 set ruler 
-set shiftwidth=4                " Tabs as 4 spaces
+set shiftwidth=4                " Tabs as 4 spaceso
+set smartindent
+set smarttab
+set tabstop=4
 set showcmd
 set showmatch
 set smartcase                   " if the search string has an upper case letter in it, the search will be case sensitive
 set softtabstop=4               " Tabs as 4 spaces
 set title 
+set autoread
+set clipboard=unnamedplus
+vmap <C-c> y:call system("xclip -i -selection clipboard", getreg("\""))<CR>:call system("xclip -i", getreg("\""))<CR>")"))
+
+" autocmd BufRead,BufWritePre *.* normal gg=G
+au BufWrite * :Autoformat
 " set mouse=a
 syntax enable                   " Syntax highlighting and colors
 
@@ -92,6 +104,11 @@ let g:rehas256=1 " molokai specific
 let g:onedark_termcolors=256 " enable for molokai
 let g:onedark_original=1 " molokai specific
 colorscheme onedark
+
+
+" Yggdroot/indentLine color
+" https://lh3.googleusercontent.com/-JBl1Qa6UoBo/USXe5Wzw5uI/AAAAAAAAEeI/f0tyZjXBiyw/s800/2013-02-21--15%253A03%253A58.png
+let g:indentLine_color_term=237
 
 " ============================================================================ "
 " ===                                 MISC.                                === "
@@ -195,3 +212,7 @@ let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
 
 " If you want :UltiSnipsEdit to split your window.
 let g:UltiSnipsEditSplit="vertical"
+
+" NERDTree mappings
+map <F2> :NERDTreeToggle<CR>
+map <F3> :NERDTreeFind<CR>

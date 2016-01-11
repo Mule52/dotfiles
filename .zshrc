@@ -1,5 +1,7 @@
 # Path to your oh-my-zsh installation.
-  export ZSH=/home/alex/.oh-my-zsh
+export ZSH=/home/alex/.oh-my-zsh
+
+export EDITOR="vim"
 
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
@@ -8,7 +10,9 @@
 
 #ZSH_THEME="robbyrussell"
 #ZSH_THEME="ys"
-ZSH_THEME="gianu"
+#ZSH_THEME="gianu"
+#ZSH_THEME="agnoster"
+ZSH_THEME="bullet-train"
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
@@ -105,6 +109,7 @@ export JRE_HOME=/usr/lib/jvm/java-8-oracle/jre
 # Separate directories by colon. To see path, use "echo $PATH" in terminal.
 export PATH=/opt/idea/bin:/home/alex/vert.x-3.0.0/bin:$PATH
 
+alias tmux="TERM=screen-256color-bce tmux"
 alias bash='. ~/.bashrc' # reloads .bashrc
 alias zsh='. ~/.zshrc' # reloads .zshrc
 alias grep='grep --color=auto'
@@ -138,12 +143,12 @@ alias sd='cd /home/alex/git/signingday-website'
 alias lax='cd /home/alex/git/signingday-lacrosse-website'
 
 diffTool() {
-	git difftool $1
+    git difftool $1
 }
 alias gd=diffTool
 
 mergeTool() {
-	git mergetool $1
+    git mergetool $1
 }
 alias gm=mergeTool
 
@@ -160,20 +165,25 @@ alias pull='git pull'
 alias push='git push'
 
 # Custom Git
-alias gh="git for-each-ref --format='%(committerdate:short)  %(refname:short)  (%(authorname))' --sort=-committerdate"
-alias gl="git log --pretty=format:'[%h] %aN, %ar: %s %n' --stat"
+alias gh='git for-each-ref --format="%(committerdate:short)  %(refname:short)  (%(authorname))" --sort=-committerdate'
+alias gl='git log --pretty=format:"[%h] %aN, %ar: %s %n" --stat'
 
 # Branches
 alias gcd='git checkout dev'
 alias gcm='git checkout master'
 alias gcs='git checkout staging'
 alias gct='git checkout test'
+alias gmd='git merge dev'
+alias gmt='git merge test'
+alias gms='git merge staging'
+alias gmm='git merge master'
 
 alias restart='sudo /etc/init.d/apache2 restart'
 alias reload='sudo service apache2 reload'
 
 alias ctagrepjs='grep -rni --include="*.js" --exclude-dir={www,node_modules,hooks,platforms,plugins,resources} $1'
 alias ctagrephtml='grep -rni --include="*.html" --exclude-dir={node_modules,hooks,platforms,plugins,resources} $1'
+alias ctsgrepjs='grep -rni --include="*.js" --exclude-dir={node_modules,php} $1'
 alias dswp='find ./ -type f -name "\.*sw[klmnop]" -delete'
 
 #alias sd='git checkout css-update'
