@@ -64,7 +64,7 @@ if [ -x /usr/bin/dircolors ]; then
     test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
 fi
 
-export PATH="/opt/idea/bin:/home/alex/vert.x-3.0.0/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/usr/lib/jvm/java-8-oracle/bin:/usr/lib/jvm/java-8-oracle/db/bin:/usr/lib/jvm/java-8-oracle/jre/bin:/home/alex:/home/alex/mysql-connector-java-5.1.38-bin.jar"
+export PATH="/opt/idea/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/usr/lib/jvm/java-8-oracle/bin:/usr/lib/jvm/java-8-oracle/db/bin:/usr/lib/jvm/java-8-oracle/jre/bin:/home/alex:/home/alex/mysql-connector-java-5.1.38-bin.jar"
 # export MANPATH="/usr/local/man:$MANPATH"
 
 source $ZSH/oh-my-zsh.sh
@@ -116,6 +116,7 @@ alias grep='grep --color=auto'
 alias ls="ls -F --color=auto"
 alias lsa="la -la"
 alias v="vim"
+alias ns="NODE_ENV=local node server.js"
 #alias ls="ls -F --color"
 
 alias ...='cd ../../../'
@@ -123,8 +124,13 @@ alias ..='cd ..'
 alias ....='cd ../../../../'
 alias .....='cd ../../../../../'
 
+alias sshcrawlers='ssh alex@45.56.69.28'
 alias sshprod='ssh alex@50.116.31.236'
 alias sshtest='ssh alex@50.116.20.188'
+alias ct-server-logs='ssh -f -L localhost:15984:127.0.0.1:5984 alex@50.116.20.188 -N'
+
+alias mysqltest='ssh -f -L 3306:localhost:3306 alex@50.116.20.188 -N'
+alias couchtest='ssh -f -L localhost:5984:127.0.0.1:5984 alex@50.116.20.188 -N'
 
 alias size='du -sh'
 
@@ -141,6 +147,8 @@ alias cts='cd /home/alex/git/coach-tools-server'
 alias cta='cd /home/alex/git/coach-tools-app'
 alias sd='cd /home/alex/git/signingday-website'
 alias lax='cd /home/alex/git/signingday-lacrosse-website'
+alias proj='cd /home/alex/projects'
+alias sd2='cd /home/alex/git/sd2'
 
 diffTool() {
     git difftool $1
@@ -181,10 +189,23 @@ alias gmm='git merge master'
 alias restart='sudo /etc/init.d/apache2 restart'
 alias reload='sudo service apache2 reload'
 
-alias ctagrepjs='grep -rni --include="*.js" --exclude-dir={www,node_modules,hooks,platforms,plugins,resources} $1'
-alias ctagrephtml='grep -rni --include="*.html" --exclude-dir={node_modules,hooks,platforms,plugins,resources} $1'
+alias ctagrepjs='grep -rni --include="*.js" --exclude-dir={lib,www,appfonts,node_modules,hooks,platforms,plugins,resources,source,bower_components} $1'
+alias ctagrephtml='grep -rni --include="*.html" --exclude-dir={lib,www,appfonts,node_modules,hooks,platforms,plugins,resources,source,bower_components} $1'
+alias ctagrepcss='grep -rni --include="*.css" --exclude-dir={lib,www,appfonts,node_modules,hooks,platforms,plugins,resources,source,bower_componenets} $1'
+alias ctagrepall='grep -rni --include="*.*" --exclude-dir={lib,www,appfonts,node_modules,hooks,platforms,plugins,resources,source,bower_componenets} $1'
+
 alias ctsgrepjs='grep -rni --include="*.js" --exclude-dir={node_modules,php} $1'
+alias ctsgrepall='grep -rni --include="*.*" --exclude-dir={node_modules,php} $1'
+alias sdgrepall='grep -rni --include="*.*" --exclude-dir={vendor,tmp} $1'
+alias sdgrepphp='grep -rni --include="*.php" --exclude-dir={vendor,tmp} $1'
+alias sdgrephtml='grep -rni --include="*.html" --exclude-dir={vendor,tmp} $1'
 alias dswp='find ./ -type f -name "\.*sw[klmnop]" -delete'
+alias grepall='grep -rni --include="*.*" $1'
+
+alias sdgrepall='grep -rni --include="*.*" --exclude-dir={target,bower_componenets,libs,.idea,.sbtserver} $1'
+alias sdgrepjs='grep -rni --include="*.js" --exclude-dir={target,bower_componenets,libs,.idea,.sbtserver} $1'
+alias sdgrepjava='grep -rni --include=".java" --exclude-dir={target,bower_componenets,libs,.idea,.sbtserver} $1'
+alias sdgrephtml='grep -rni --include="*.html" --exclude-dir={target,bower_componenets,libs,.idea,.sbtserver} $1'
 
 #alias sd='git checkout css-update'
 #alias lms='git checkout css-update-lms'

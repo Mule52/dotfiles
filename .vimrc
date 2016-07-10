@@ -12,7 +12,8 @@ Bundle 'gmarik/vundle'
 
 " Installed plugins
 Bundle 'corntrace/bufexplorer'
-Bundle 'bling/vim-airline'
+Bundle 'vim-airline/vim-airline'
+Bundle 'vim-airline/vim-airline-themes'
 Bundle 'kien/ctrlp.vim'
 Bundle 'scrooloose/nerdtree'
 Bundle 'scrooloose/syntastic'
@@ -37,6 +38,8 @@ Bundle "xenoterracide/html.vim"
 Bundle "Valloric/YouCompleteMe"
 Bundle "Chiel92/vim-autoformat"
 Bundle "Yggdroot/indentLine"
+Bundle "mileszs/ack.vim"
+Bundle "dbext.vim"
 
 " ============================================================================ "
 " ===                           EDITING OPTIONS                            === "
@@ -79,12 +82,14 @@ set autoread
 set clipboard=unnamedplus
 vmap <C-c> y:call system("xclip -i -selection clipboard", getreg("\""))<CR>:call system("xclip -i", getreg("\""))<CR>")"))
 
+" Autoformat
 " autocmd BufRead,BufWritePre *.* normal gg=G
-au BufNewFile,BufRead *.gradle set filetype=groovy
-au BufWrite * :Autoformat
-" set mouse=a
-syntax enable                   " Syntax highlighting and colors
+" au BufWrite * :Autoformat
+noremap <F4> :Autoformat<CR>
+let g:autoformat_verbosemode = 1
+let g:formatdef_jsbeautify_javascript = '"js-beautify --config /home/alex/git/coach-tools-app/.jsbeautifyrc"'
 
+" set mouse=a
 set mouse+=a
 if &term =~ '^screen'
     " tmux knows the extended mouse mode
@@ -94,21 +99,50 @@ end
 " ============================================================================ "
 " ===                                COLORS                                === "
 " ============================================================================ "
-syntax enable
+set background=dark
+syntax enable                   " Syntax highlighting and colors
 " :color delek
-set t_Co=256 " needs to be turned on for molokai
+
+set t_Co=256 
+" let g:rehas256=1 
+
+" colorscheme molokai
 " let g:molokai_termcolors=256 " enable for molokai
 " let g:molokai_original=1 " molokai specific
-let g:rehas256=1 " molokai specific
-" colorscheme molokai
 
-let g:onedark_termcolors=256 " enable for molokai
-let g:onedark_original=1 " molokai specific
 " colorscheme onedark
+" let g:onedark_termcolors=256 " enable for molokai
+" let g:onedark_original=1 " molokai specific
 
 " hybrid color scheme
-set background=dark
-colorscheme hybrid
+" colorscheme solarized-alex
+" colorscheme hybrid
+" colorscheme atom
+" colorschemes that work:
+" colorscheme mustang
+colorscheme muon
+" colorscheme molokai
+" colorscheme monokai
+" colorscheme holokai
+" colorscheme hybrid
+" colorscheme onedark
+" colorscheme harlequin
+" colorscheme miko
+" colorscheme nature
+" colorscheme mango
+" colorscheme nazca
+" colorscheme maroloccio
+" colorscheme monokai-chris
+" colorscheme newsprint
+" colorscheme obsidian
+" colorscheme atom
+" colorscheme kafka
+" colorscheme up
+" colorscheme Tomorrow-Night
+" colorscheme wombat256mod
+" colorscheme zenburn
+" colorscheme flatcolor
+" colorscheme bubblegum
 
 " Yggdroot/indentLine color
 " https://lh3.googleusercontent.com/-JBl1Qa6UoBo/USXe5Wzw5uI/AAAAAAAAEeI/f0tyZjXBiyw/s800/2013-02-21--15%253A03%253A58.png
@@ -129,7 +163,7 @@ set wildmode=list:longest " allow for tab completion in the command line
 
 autocmd BufRead,BufNewFile *.go set filetype=go
 autocmd BufRead,BufNewFile *.go set makeprg=go\ build\ %
-
+autocmd BufRead,BufNewFile *.gradle set filetype=groovy
 
 " Method to clear buffer history for large projects/files
 function! ClearHiddenRO()
@@ -148,6 +182,8 @@ map <leader>q call ClearHiddenRO()
 
 " Enable vim-airline
 let g:airline#extensions#tabline#enabled = 1
+" Show just the filename
+let g:airline#extensions#tabline#fnamemod = ':t'
 
 " air-line
 let g:airline_powerline_fonts = 1
@@ -195,7 +231,9 @@ let g:airline_detect_iminsert=0
 let g:airline_inactive_collapse=1
 
 " themes are automatically selected based on the matching colorscheme. this can be overridden by defining a value.
-let g:airline_theme='wombat'
+" https://github.com/vim-airline/vim-airline-themes
+" let g:airline_theme='wombat'
+let g:airline_theme='solarized'
 
 let g:bufferline_echo = 0
 set noshowmode
@@ -227,3 +265,15 @@ map <F3> :NERDTreeFind<CR>
 execute pathogen#infect()
 call pathogen#infect()
 
+" Easy Motion mappings
+map <Leader>l <Plug>(easymotion-lineforward)
+map <Leader>j <Plug>(easymotion-j)
+map <Leader>k <Plug>(easymotion-k)
+map <Leader>h <Plug>(easymotion-linebackward)
+map <Leader>a <Plug>(easymotion-anywhere)
+
+
+let g:dbext_default_profile_local="type=MYSQL:extra=--defaults-file=/home/alex/.my.cnf -t"
+let g:dbext_default_profile_test="type=MYSQL:host=50.116.20.188:extra=-t"
+let g:dbext_default_profile_prod="type=MYSQL:host=50.116.31.236:extra=-t"
+let g:dbext_default_profile_test_external_info_sources="type=MYSQL:host=50.116.20.188:dbname=external_info_sources"
