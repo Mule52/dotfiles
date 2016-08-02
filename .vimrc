@@ -3,9 +3,10 @@
 " ============================================================================ "
 
 " Set up Vundle
+set nocompatible
 filetype off
-set rtp+=~/.vim/bundle/vundle/
-call vundle#rc()
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
 
 " Bundle list
 Bundle 'gmarik/vundle'
@@ -30,16 +31,17 @@ Bundle 'evidens/vim-twig'
 Bundle 'Townk/vim-autoclose'
 Bundle 'edkolev/tmuxline.vim'
 Bundle 'jelera/vim-javascript-syntax'
-Bundle "pangloss/vim-javascript"
-Bundle "tpope/vim-surround"
-Bundle "vim-scripts/tcomment"
-Bundle "geoffharcourt/vim-matchit"
-Bundle "xenoterracide/html.vim"
-Bundle "Valloric/YouCompleteMe"
-Bundle "Chiel92/vim-autoformat"
-Bundle "Yggdroot/indentLine"
-Bundle "mileszs/ack.vim"
-Bundle "dbext.vim"
+Bundle 'pangloss/vim-javascript'
+Bundle 'tpope/vim-surround'
+Bundle 'vim-scripts/tcomment'
+Bundle 'geoffharcourt/vim-matchit'
+Bundle 'xenoterracide/html.vim'
+Bundle 'Valloric/YouCompleteMe'
+Bundle 'Chiel92/vim-autoformat'
+Bundle 'Yggdroot/indentLine'
+Bundle 'mileszs/ack.vim'
+Bundle 'dbext.vim'
+Bundle 'flazz/vim-colorschemes'
 
 " ============================================================================ "
 " ===                           EDITING OPTIONS                            === "

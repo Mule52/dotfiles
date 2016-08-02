@@ -70,7 +70,6 @@ export PATH="/opt/idea/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sb
 source $ZSH/oh-my-zsh.sh
 
 
-
 # You may need to manually set your language environment
 # export LANG=en_US.UTF-8
 
@@ -107,8 +106,11 @@ export JAVA_HOME=/usr/lib/jvm/java-8-oracle
 export JRE_HOME=/usr/lib/jvm/java-8-oracle/jre
 
 # Separate directories by colon. To see path, use "echo $PATH" in terminal.
-export PATH=/opt/idea/bin:/home/alex/vert.x-3.0.0/bin:$PATH
+export PATH=/opt/idea/bin:$PATH
+export PATH=/home/alex/Documents/activator-dist-1.3.10/bin:$PATH
 
+
+alias gogh="wget -O xt  http://git.io/vGz67 && chmod +x xt && ./xt && rm xt"
 alias tmux="TERM=screen-256color-bce tmux"
 alias bash='. ~/.bashrc' # reloads .bashrc
 alias zsh='. ~/.zshrc' # reloads .zshrc
@@ -145,6 +147,7 @@ alias projects='cd /home/alex/projects'
 alias dev='cd /home/alex/git'
 alias cts='cd /home/alex/git/coach-tools-server'
 alias cta='cd /home/alex/git/coach-tools-app'
+alias ws='cd /home/alex/git/web-scrapers'
 alias sd='cd /home/alex/git/signingday-website'
 alias lax='cd /home/alex/git/signingday-lacrosse-website'
 alias proj='cd /home/alex/projects'
