@@ -7,6 +7,8 @@ export JRE_HOME=/usr/lib/jvm/java-8-oracle/jre
 # Separate directories by colon. To see path, use "echo $PATH" in terminal.
 export PATH=/opt/idea/bin:/home/alex/vert.x-3.0.0/bin:$PATH
 
+export WB_FORCE_SYSTEM_COLORS=1
+
 
 alias bash='. ~/.bashrc' # reloads .bashrc
 alias ..='cd ..'

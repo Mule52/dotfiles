@@ -1,4 +1,4 @@
-# Path to your oh-my-zsh installation.
+
 export ZSH=/home/alex/.oh-my-zsh
 
 export EDITOR="vim"
@@ -96,7 +96,7 @@ source $ZSH/oh-my-zsh.sh
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
 
-
+export WB_FORCE_SYSTEM_COLORS=1
 
 
 #export JAVA_HOME=/opt/jdk1.8.0_45
@@ -128,7 +128,9 @@ alias .....='cd ../../../../../'
 
 alias sshcrawlers='ssh alex@45.56.69.28'
 alias sshprod='ssh alex@50.116.31.236'
+alias sftpprod='sftp alex@50.116.31.236'
 alias sshtest='ssh alex@50.116.20.188'
+alias sftptest='sftp alex@50.116.20.188'
 alias ct-server-logs='ssh -f -L localhost:15984:127.0.0.1:5984 alex@50.116.20.188 -N'
 
 alias mysqltest='ssh -f -L 3306:localhost:3306 alex@50.116.20.188 -N'
@@ -152,6 +154,7 @@ alias sd='cd /home/alex/git/signingday-website'
 alias lax='cd /home/alex/git/signingday-lacrosse-website'
 alias proj='cd /home/alex/projects'
 alias sd2='cd /home/alex/git/sd2'
+alias ws='cd /home/alex/git/web-scrapers'
 
 diffTool() {
     git difftool $1
